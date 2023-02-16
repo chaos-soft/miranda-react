@@ -1,2 +1,3 @@
-# miranda-next
-UI к Miranda на Next.js
+# UI к Miranda на Next.js
+
+Скоро будет.
