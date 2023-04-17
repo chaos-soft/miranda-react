@@ -8,4 +8,9 @@
   animation: fadein 500ms 1s;
   animation-fill-mode: forwards;
   opacity: 0;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+.twob > div img {
+  max-height: calc(100vh - 8px);
 }

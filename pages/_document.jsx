@@ -6,6 +6,7 @@ export default function Document () {
       <Head>
         <link rel='stylesheet' href='store/common.css' />
         <link rel='stylesheet' href='store/2b.css' />
+        <link rel='stylesheet' href='store/jill.css' />
         <link rel='stylesheet' href='store/main.css' />
         <link rel='stylesheet' href='store/stream.css' />
         <meta name='description' content='' />

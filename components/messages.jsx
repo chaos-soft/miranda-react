@@ -52,8 +52,16 @@ function Messages ({
         main(data)
       }
       if (data.messages.length) {
-        data.messages.forEach((message) => processMessage(message))
-        setMessages((messages) => [...messages, ...data.messages])
+        const dm = data.messages.filter((message) => {
+          if (systemIds.includes(message.id) || message.id in icons) {
+            return true
+          }
+          return false
+        })
+        if (dm.length) {
+          dm.forEach((message) => processMessage(message))
+          setMessages((messages) => [...messages, ...dm])
+        }
       } else if (emptyData) {
         emptyData()
       }

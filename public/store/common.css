@@ -60,15 +60,18 @@ html {
 }
 
 img {
-  margin: 2px 0;
-  max-height: calc(100vh - 8px);
+  max-height: calc(100vh - 4px);
   max-width: 100%;
   vertical-align: middle;
 }
 
 main > div {
+  overflow: hidden;
   padding-bottom: 2px;
   padding-top: 2px;
+}
+main > div > b {
+  color: #3992d6;
 }
 main > div > img:first-child {
   width: 16px;

@@ -3,40 +3,40 @@ import React, { useState, useEffect, useRef } from 'react'
 import Base from '../components/base'
 import Messages from '../components/messages'
 
-export default function Stream () {
-  // На 12 чат скрывается (через 60 секунд).
+let scrollInterval = null
+
+export default function Jill () {
   const [i, setI] = useState(0)
   const [messages, setMessages] = useState([])
+  const [total, setTotal] = useState(0)
   const main = useRef(null)
-  const isScrolling = useRef(true)
-
-  function emptyData () {
-    isScrolling.current = false
-    setI((i) => i + 1)
-  }
 
   function scroll () {
-    if (isScrolling.current) {
-      main.current.scroll(0, 1000000)
-    }
+    main.current.scrollBy(0, main.current.offsetHeight)
   }
 
   useEffect(() => {
-    const scrollInterval = setInterval(scroll, 1000)
+    if (i !== 0) {
+      scroll()
+    }
+    scrollInterval = setInterval(() => {
+      scroll()
+      setI((i) => i + 1)
+    }, 5000)
+    setTotal(messages.length)
     return () => clearInterval(scrollInterval)
-  }, [])
+  }, [messages])
 
   useEffect(() => {
-    isScrolling.current = true
-    setI(0)
-  }, [messages])
+    if (i === total) {
+      clearInterval(scrollInterval)
+    }
+  }, [i])
 
   return (
     <Base>
-      <main className={`stream ${i >= 12 ? 'o0' : ''}`} ref={main}>
+      <main className={`stream jill ${i === total ? 'o0' : ''}`} ref={main}>
         <Messages
-          emptyData={emptyData}
-          error={emptyData}
           isColor
           messages={messages}
           offset={-10}

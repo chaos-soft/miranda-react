@@ -11,6 +11,8 @@ export default function Index () {
           {' '}
           <a href='2b.html'>2B</a>
           {' '}
+          <a href='jill.html'>Jill</a>
+          {' '}
           <a href='stream.html'>Stream</a>
         </>}
       {!isProd &&
@@ -18,6 +20,8 @@ export default function Index () {
           <Link href='main'>Main</Link>
           {' '}
           <Link href='2b'>2B</Link>
+          {' '}
+          <Link href='jill'>Jill</Link>
           {' '}
           <Link href='stream'>Stream</Link>
         </>}
