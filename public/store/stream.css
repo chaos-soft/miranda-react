@@ -1,0 +1,13 @@
+.stream {
+  /* background: url(https://57st.net/store/blog/2017/10/16/72850_screenshots_2013-06-26_00010.jpg) no-repeat fixed center; */
+  color: white;
+  font: bold 16px/20px 'helvetica neue', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .9);
+  transition: opacity 2s;
+}
+.stream.o0 {
+   opacity: 0;
+}
