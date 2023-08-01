@@ -22,7 +22,7 @@ export default function TwoB () {
           offset={-10}
           onAnimationEnd={onAnimationEnd}
           setMessages={setMessages}
-          systemIds={['e', 'p']}
+          systemIds={['e', 'p', 'js']}
         />
       </main>
     </Base>

@@ -18,7 +18,8 @@
 
 ## Production
 
-Создаём файл .env.production со ссылкой на сервер, где уже работает Miranda:
+Создаём файл .env.production со ссылкой на сервер, где уже работает
+[Miranda](https://github.com/chaos-soft/miranda):
 
     NEXT_PUBLIC_WEBSOCKET_URL=wss://xxx
 

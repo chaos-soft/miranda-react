@@ -85,7 +85,7 @@ export default function Main () {
             main={(data) => setStats(data.stats)}
             messages={messages}
             setMessages={setMessages}
-            systemIds={['e', 'm', 'p']}
+            systemIds={['e', 'm', 'p', 'js']}
           />
         </main>
       </div>

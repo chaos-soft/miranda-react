@@ -41,7 +41,7 @@ export default function Jill () {
           messages={messages}
           offset={-10}
           setMessages={setMessages}
-          systemIds={['e', 'p']}
+          systemIds={['e', 'p', 'js']}
         />
       </main>
     </Base>
