@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import Base from '../components/base'
-import Messages from '../components/messages'
+import Tts from '../components/tts'
 
 export default function Main () {
   const [messages, setMessages] = useState([])
@@ -49,13 +49,14 @@ export default function Main () {
   }
 
   useEffect(() => {
-    const scrollInterval = setInterval(scroll, 1000)
+    let scrollInterval = setInterval(scroll, 1000)
     document.addEventListener('keydown', keydown)
     document.addEventListener('mousedown', mousedown)
     document.addEventListener('touchstart', stopScroll)
     document.addEventListener('wheel', stopScroll)
     return () => {
       clearInterval(scrollInterval)
+      scrollInterval = null
       document.removeEventListener('keydown', keydown)
       document.removeEventListener('mousedown', mousedown)
       document.removeEventListener('touchstart', stopScroll)
@@ -75,17 +76,16 @@ export default function Main () {
         <div className='panel'>
           <div><img src='store/icons/g.png' /> <span>{stats.g}</span></div>
           <div><img src='store/icons/t.ico' /> <span>{stats.t}</span></div>
-          <div><img src='store/icons/w.png' /> <span>{stats.w}</span></div>
           <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
         </div>
         <main className='wrapper' ref={main}>
-          <Messages
+          <Tts
             emptyData={emptyData}
             error={error}
             main={(data) => setStats(data.stats)}
             messages={messages}
             setMessages={setMessages}
-            systemIds={['e', 'm', 'p', 'js']}
+            systemIds={['e', 'm', 'p', 'js', 'tts']}
           />
         </main>
       </div>

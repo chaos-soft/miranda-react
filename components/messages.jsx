@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Message } from './common'
 
-const icons = { g: 'g.png', s: 's.ico', t: 't.ico', w: 'w.png' }
+const icons = { g: 'g.png', s: 's.ico', t: 't.ico' }
 const url = process.env.NEXT_PUBLIC_WEBSOCKET_URL
 
 function Messages ({
@@ -13,6 +13,7 @@ function Messages ({
   main,
   messages,
   offset,
+  processMessage,
   setMessages,
   systemIds,
   ...props
@@ -21,7 +22,7 @@ function Messages ({
   let names = []
   offset = offset || 0
 
-  function processMessage (message) {
+  function processMessage_ (message) {
     if (message.id === 'js' && message.text === 'clean_chat') {
       setMessages([])
     } else if (message.id in icons) {
@@ -39,6 +40,7 @@ function Messages ({
     const w = new WebSocket(url)
     w.addEventListener('close', () => {
       clearInterval(interval)
+      interval = null
       setTimeout(() => setIsReconnect(!isReconnect), 5 * 1000)
       if (error) {
         error()
@@ -59,14 +61,19 @@ function Messages ({
           return false
         })
         if (dm.length) {
-          dm.forEach((message) => processMessage(message))
+          dm.forEach((message) => {
+            processMessage_(message)
+            if (processMessage) {
+              processMessage(message)
+            }
+          })
           setMessages((messages) => [...messages, ...dm])
         }
       } else if (emptyData) {
         emptyData()
       }
     })
-    const interval = setInterval(() => {
+    let interval = setInterval(() => {
       if (w.readyState === w.OPEN) {
         w.send(JSON.stringify({ offset }))
       }

@@ -22,8 +22,11 @@ export default function Stream () {
   }
 
   useEffect(() => {
-    const scrollInterval = setInterval(scroll, 1000)
-    return () => clearInterval(scrollInterval)
+    let scrollInterval = setInterval(scroll, 1000)
+    return () => {
+      clearInterval(scrollInterval)
+      scrollInterval = null
+    }
   }, [])
 
   useEffect(() => {
