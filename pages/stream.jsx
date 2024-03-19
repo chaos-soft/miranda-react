@@ -22,8 +22,11 @@ export default function Stream () {
   }
 
   useEffect(() => {
-    const scrollInterval = setInterval(scroll, 1000)
-    return () => clearInterval(scrollInterval)
+    let scrollInterval = setInterval(scroll, 1000)
+    return () => {
+      clearInterval(scrollInterval)
+      scrollInterval = null
+    }
   }, [])
 
   useEffect(() => {
@@ -41,7 +44,7 @@ export default function Stream () {
           messages={messages}
           offset={-10}
           setMessages={setMessages}
-          systemIds={['e', 'p']}
+          systemIds={['e', 'p', 'js']}
         />
       </main>
     </Base>

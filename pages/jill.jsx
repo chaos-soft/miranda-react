@@ -24,24 +24,29 @@ export default function Jill () {
       setI((i) => i + 1)
     }, 5000)
     setTotal(messages.length)
-    return () => clearInterval(scrollInterval)
+    return () => {
+      clearInterval(scrollInterval)
+      scrollInterval = null
+    }
   }, [messages])
 
   useEffect(() => {
-    if (i === total) {
+    if (i >= total) {
       clearInterval(scrollInterval)
+      scrollInterval = null
+      setI(total)
     }
   }, [i])
 
   return (
     <Base>
-      <main className={`stream jill ${i === total ? 'o0' : ''}`} ref={main}>
+      <main className={`stream jill ${i >= total ? 'o0' : ''}`} ref={main}>
         <Messages
           isColor
           messages={messages}
           offset={-10}
           setMessages={setMessages}
-          systemIds={['e', 'p']}
+          systemIds={['e', 'p', 'js']}
         />
       </main>
     </Base>
