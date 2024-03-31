@@ -1,11 +1,12 @@
 'use strict'
 /* global Global */
 
+const reSmile = /:\w+:/gi
+
 class Message {
   constructor (message) {
     this.message = message
     this.replacements = 'replacements' in message ? message.replacements : []
-    this.reSmile = /:\w+:/gi
   }
 
   addReplacement (replacement, smileName, smiles) {
@@ -22,7 +23,7 @@ class Message {
   }
 
   prepareG () {
-    const m = this.message.text.match(this.reSmile)
+    const m = this.message.text.match(reSmile)
     if (m) {
       m.forEach((replacement) => {
         const smileName = replacement.slice(1, -1)
@@ -39,7 +40,7 @@ class Message {
   }
 
   prepareS () {
-    const m = this.message.text.match(this.reSmile)
+    const m = this.message.text.match(reSmile)
     if (m) {
       m.forEach((replacement) => {
         const smileName = replacement.slice(1, -1)

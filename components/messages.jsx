@@ -1,9 +1,10 @@
 /* global WebSocket */
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import { Message } from './common'
 
-const icons = { g: 'g.png', s: 's.ico', t: 't.ico' }
+const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico' }
 const url = process.env.NEXT_PUBLIC_WEBSOCKET_URL
 
 function Messages ({
@@ -19,6 +20,7 @@ function Messages ({
   ...props
 }) {
   const [isReconnect, setIsReconnect] = useState(true)
+  const router = useRouter()
   let names = []
   offset = offset || 0
 
@@ -37,6 +39,9 @@ function Messages ({
   }
 
   useEffect(() => {
+    if (!router.isReady) {
+      return
+    }
     const w = new WebSocket(url)
     w.addEventListener('close', () => {
       clearInterval(interval)
@@ -75,18 +80,20 @@ function Messages ({
     })
     let interval = setInterval(() => {
       if (w.readyState === w.OPEN) {
-        w.send(JSON.stringify({ offset }))
+        w.send(JSON.stringify({ offset, code: router.query.code }))
       }
     }, 5 * 1000)
     return () => w.close()
-  }, [isReconnect])
+  }, [isReconnect, router.isReady])
 
   return (
     messages.map((message, i) => {
       if (systemIds.includes(message.id)) {
         return (
           <div key={i} className={message.id} {...props}>
-            <b>Miranda</b>: {message.text}
+            <b>Miranda</b>
+            {': '}
+            <span dangerouslySetInnerHTML={{ __html: message.text }} />
           </div>
         )
       } else if (message.id in icons) {

@@ -9,6 +9,7 @@ export default function Document () {
         {isProd && <link rel='stylesheet' href='store/xxx.css' />}
         {!isProd &&
           <>
+            <link rel='stylesheet' href='store/reset.css' />
             <link rel='stylesheet' href='store/common.css' />
             <link rel='stylesheet' href='store/2b.css' />
             <link rel='stylesheet' href='store/jill.css' />

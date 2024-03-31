@@ -1,25 +1,33 @@
+.main, .main a {
+  color: #eceff4;
+}
+
 .main {
   background: #2e3440;
-  color: #eceff4;
   font: bold 18px/22px sans-serif;
   min-height: 100vh;
 }
+
 .main > main {
   padding-top: 36px;
 }
+
 .main > main > div {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .main > main > div > b {
   font-weight: bold;
   text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
 }
+
 .main > main > .name {
   background-color: #4c566a;
   border-radius: 4px;
   margin-top: 4px;
 }
+
 .main > .panel {
   backdrop-filter: blur(30px);
   border-bottom: 2px solid #4c566a;
@@ -34,15 +42,19 @@
   top: 0;
   width: 100%;
 }
+
 .main > .panel > * {
   padding: 0 5px;
 }
+
 .main > .panel > div > img {
   vertical-align: -4px;
 }
+
 .main > .panel > i.active {
   cursor: pointer;
 }
+
 .main > .panel > i:not(.active) {
   color: rgba(255, 255, 255, .4);
   text-shadow: none;
@@ -52,6 +64,7 @@
   .main {
     font: normal 14px/18px sans-serif;
   }
+
   .main > .wrapper {
     margin-left: auto;
     margin-right: auto;

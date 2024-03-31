@@ -1,4 +1,5 @@
 cat \
+    public/store/reset.css \
     public/store/common.css \
     public/store/2b.css \
     public/store/jill.css \
