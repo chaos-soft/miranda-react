@@ -76,6 +76,7 @@ export default function Main () {
         <div className='panel'>
           <div><img src='store/icons/g.png' /> <span>{stats.g}</span></div>
           <div><img src='store/icons/t.ico' /> <span>{stats.t}</span></div>
+          <div><img src='store/icons/v.png' /> <span>{stats.v}</span></div>
           <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
         </div>
         <main className='wrapper' ref={main}>

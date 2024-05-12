@@ -26,3 +26,11 @@ main > div > b {
 main > div > img:first-child {
   width: 16px;
 }
+
+main > .v p {
+  display: inline-block;
+}
+
+main a {
+  color: white;
+}

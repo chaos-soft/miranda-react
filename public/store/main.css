@@ -49,6 +49,7 @@
 
 .main > .panel > div > img {
   vertical-align: -4px;
+  width: 16px;
 }
 
 .main > .panel > i.active {

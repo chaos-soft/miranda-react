@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Message } from './common'
 
-const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico' }
+const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico', v: 'v.png' }
 const url = process.env.NEXT_PUBLIC_WEBSOCKET_URL
 
 function Messages ({
