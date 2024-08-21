@@ -1,9 +1,3 @@
-@keyframes fadein {
-  to {
-    opacity: 1;
-  }
-}
-
 .twob > div {
   animation: fadein 500ms 1s;
   animation-fill-mode: forwards;
@@ -15,3 +9,10 @@
 .twob > div img {
   max-height: calc(100vh - 8px);
 }
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+

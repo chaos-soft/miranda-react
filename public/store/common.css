@@ -1,4 +1,8 @@
-main > .e > b, main > .js > b, main > .m > b, main > .p > b, main > .tts > b {
+main > .e > b,
+main > .js > b,
+main > .m > b,
+main > .p > b,
+main > .tts > b {
   color: #de4dc6 !important;
 }
 
@@ -11,6 +15,10 @@ img {
   max-height: calc(100vh - 4px);
   max-width: 100%;
   vertical-align: middle;
+}
+
+main > .v p {
+  display: inline-block;
 }
 
 main > div {
@@ -27,10 +35,7 @@ main > div > img:first-child {
   width: 16px;
 }
 
-main > .v p {
-  display: inline-block;
-}
-
 main a {
   color: white;
 }
+
