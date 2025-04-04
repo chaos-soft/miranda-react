@@ -1,11 +1,11 @@
 /* global WebSocket */
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useSearchParams } from 'react-router-dom'
 
 import { Message } from './common'
 
 const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico', v: 'v.png' }
-const url = process.env.NEXT_PUBLIC_WEBSOCKET_URL
+const url = import.meta.env.VITE_WEBSOCKET_URL
 
 function Messages ({
   emptyData,
@@ -20,7 +20,7 @@ function Messages ({
   ...props
 }) {
   const [isReconnect, setIsReconnect] = useState(true)
-  const router = useRouter()
+  const [searchParams] = useSearchParams()
   let names = []
   offset = offset || 0
 
@@ -39,9 +39,6 @@ function Messages ({
   }
 
   useEffect(() => {
-    if (!router.isReady) {
-      return
-    }
     const w = new WebSocket(url)
     w.addEventListener('close', () => {
       clearInterval(interval)
@@ -80,11 +77,11 @@ function Messages ({
     })
     let interval = setInterval(() => {
       if (w.readyState === w.OPEN) {
-        w.send(JSON.stringify({ offset, code: router.query.code }))
+        w.send(JSON.stringify({ offset, code: searchParams.get('code') || '' }))
       }
     }, 5 * 1000)
     return () => w.close()
-  }, [isReconnect, router.isReady])
+  }, [isReconnect])
 
   return (
     messages.map((message, i) => {

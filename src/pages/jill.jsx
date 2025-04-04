@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import Base from '../components/base'
 import Messages from '../components/messages'
 
 let scrollInterval = null
@@ -39,16 +38,14 @@ export default function Jill () {
   }, [i])
 
   return (
-    <Base>
-      <main className={`stream jill ${i >= total ? 'o0' : ''}`} ref={main}>
-        <Messages
-          isColor
-          messages={messages}
-          offset={-10}
-          setMessages={setMessages}
-          systemIds={['e', 'p', 'js']}
-        />
-      </main>
-    </Base>
+    <main className={`stream jill ${i >= total ? 'o0' : ''}`} ref={main}>
+      <Messages
+        isColor
+        messages={messages}
+        offset={-10}
+        setMessages={setMessages}
+        systemIds={['e', 'p', 'js']}
+      />
+    </main>
   )
 }

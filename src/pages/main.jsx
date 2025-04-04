@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import Base from '../components/base'
 import Tts from '../components/tts'
 
 export default function Main () {
@@ -71,25 +70,28 @@ export default function Main () {
   }, [messages])
 
   return (
-    <Base>
-      <div className='main'>
-        <div className='panel'>
-          <div><img src='store/icons/g.png' /> <span>{stats.g}</span></div>
-          <div><img src='store/icons/t.ico' /> <span>{stats.t}</span></div>
-          <div><img src='store/icons/v.png' /> <span>{stats.v}</span></div>
-          <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
-        </div>
-        <main className='wrapper' ref={main}>
-          <Tts
-            emptyData={emptyData}
-            error={error}
-            main={(data) => setStats(data.stats)}
-            messages={messages}
-            setMessages={setMessages}
-            systemIds={['e', 'm', 'p', 'js', 'tts']}
-          />
-        </main>
+    <div className='main'>
+      <div className='panel'>
+        <div><img src='store/icons/g.png' /></div>
+        <div>{stats.g || '-'}</div>
+        <div><img src='store/icons/t.ico' /></div>
+        <div>{stats.t || '-'}</div>
+        <div><img src='store/icons/v.png' /></div>
+        <div>{stats.v || '-'}</div>
+        <div><img src='store/icons/y.ico' /></div>
+        <div>{stats.y || '-'}</div>
+        <div><i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i></div>
       </div>
-    </Base>
+      <main className='wrapper' ref={main}>
+        <Tts
+          emptyData={emptyData}
+          error={error}
+          main={(data) => setStats(data.stats)}
+          messages={messages}
+          setMessages={setMessages}
+          systemIds={['e', 'm', 'p', 'js', 'tts']}
+        />
+      </main>
+    </div>
   )
 }

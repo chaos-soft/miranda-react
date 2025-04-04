@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import Base from '../components/base'
 import Messages from '../components/messages'
 
 export default function Stream () {
@@ -35,18 +34,16 @@ export default function Stream () {
   }, [messages])
 
   return (
-    <Base>
-      <main className={`stream ${i >= 12 ? 'o0' : ''}`} ref={main}>
-        <Messages
-          emptyData={emptyData}
-          error={emptyData}
-          isColor
-          messages={messages}
-          offset={-10}
-          setMessages={setMessages}
-          systemIds={['e', 'p', 'js']}
-        />
-      </main>
-    </Base>
+    <main className={`stream ${i >= 12 ? 'o0' : ''}`} ref={main}>
+      <Messages
+        emptyData={emptyData}
+        error={emptyData}
+        isColor
+        messages={messages}
+        offset={-10}
+        setMessages={setMessages}
+        systemIds={['e', 'p', 'js']}
+      />
+    </main>
   )
 }

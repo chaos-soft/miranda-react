@@ -14,32 +14,32 @@
   border-bottom: 2px solid #4c566a;
   box-shadow: 0 0 5px rgba(0, 0, 0, .5);
   display: flex;
-  font: 14px/24px sans-serif;
+  font: 14px/1 sans-serif;
   justify-content: center;
   left: 0;
-  padding: 5px 0;
+  padding: 7px 0;
   position: fixed;
   text-shadow: 0 1px 3px #2e3440;
   top: 0;
   width: 100%;
 }
 
-.main > .panel > * {
+.main > .panel > div {
+  align-self: center;
   padding: 0 5px;
 }
 
-.main > .panel > div > img {
-  vertical-align: -4px;
-  width: 16px;
-}
-
-.main > .panel > i.active {
+.main > .panel > div > i.active {
   cursor: pointer;
 }
 
-.main > .panel > i:not(.active) {
+.main > .panel > div > i:not(.active) {
   color: rgba(255, 255, 255, .4);
   text-shadow: none;
+}
+
+.main > .panel > div > img {
+  width: 16px;
 }
 
 .main > main {

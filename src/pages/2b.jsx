@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 
-import Base from '../components/base'
 import Messages from '../components/messages'
 
 export default function TwoB () {
@@ -14,17 +13,15 @@ export default function TwoB () {
   }
 
   return (
-    <Base>
-      <main className='stream twob'>
-        <Messages
-          isColor
-          messages={messages}
-          offset={-10}
-          onAnimationEnd={onAnimationEnd}
-          setMessages={setMessages}
-          systemIds={['e', 'p', 'js']}
-        />
-      </main>
-    </Base>
+    <main className='stream twob'>
+      <Messages
+        isColor
+        messages={messages}
+        offset={-10}
+        onAnimationEnd={onAnimationEnd}
+        setMessages={setMessages}
+        systemIds={['e', 'p', 'js']}
+      />
+    </main>
   )
 }
