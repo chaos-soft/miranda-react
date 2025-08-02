@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 
 import Tts from '../components/tts'
 
+const message = { id: 'm', text: 'потеряно соединение.', classes: ['m'] }
+
 export default function Main () {
   const [messages, setMessages] = useState([])
   const [isScrolling_, setIsScrolling_] = useState(true)
@@ -14,8 +16,9 @@ export default function Main () {
   }
 
   function error () {
-    const message = { id: 'm', text: 'потеряно соединение.', classes: ['m'] }
-    setMessages((messages) => [...messages, message])
+    if ((messages[messages.length - 1] || {}).text !== message.text) {
+      setMessages((messages) => [message])
+    }
     emptyData()
   }
 
@@ -72,20 +75,21 @@ export default function Main () {
   return (
     <div className='main'>
       <div className='panel'>
-        <div><img src='store/icons/g.png' /></div>
-        <div>{stats.g || '-'}</div>
-        <div><img src='store/icons/t.ico' /></div>
-        <div>{stats.t || '-'}</div>
-        <div><img src='store/icons/v.png' /></div>
-        <div>{stats.v || '-'}</div>
-        <div><img src='store/icons/y.ico' /></div>
-        <div>{stats.y || '-'}</div>
-        <div><i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i></div>
+        <img src='store/icons/g.png' />
+        <span>{stats.g || '-'}</span>
+        <img src='store/icons/t.ico' />
+        <span>{stats.t || '-'}</span>
+        <img src='store/icons/v.png' />
+        <span>{stats.v || '-'}</span>
+        <img src='store/icons/y.ico' />
+        <span>{stats.y || '-'}</span>
+        <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
       </div>
       <main className='wrapper' ref={main}>
         <Tts
           emptyData={emptyData}
           error={error}
+          isColor
           main={(data) => setStats(data.stats)}
           messages={messages}
           setMessages={setMessages}

@@ -42,7 +42,7 @@ export default function Jill () {
       <Messages
         isColor
         messages={messages}
-        offset={-10}
+        offset={-2}
         setMessages={setMessages}
         systemIds={['e', 'p', 'js']}
       />

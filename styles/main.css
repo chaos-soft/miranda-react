@@ -1,72 +1,79 @@
 .main,
 .main a {
-  color: #eceff4;
+  color: var(--storm3);
 }
 
 .main {
-  background: #2e3440;
-  font: bold 18px/22px sans-serif;
+  background: var(--night0);
+  font-size: 14px;
   min-height: 100vh;
 }
 
 .main > .panel {
   backdrop-filter: blur(30px);
-  border-bottom: 2px solid #4c566a;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+  border-bottom: 5px solid var(--night4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   display: flex;
-  font: 14px/1 sans-serif;
+  gap: 10px;
   justify-content: center;
   left: 0;
-  padding: 7px 0;
+  padding: 10px 0;
   position: fixed;
-  text-shadow: 0 1px 3px #2e3440;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   top: 0;
   width: 100%;
 }
 
-.main > .panel > div {
+.main > .panel > * {
   align-self: center;
-  padding: 0 5px;
 }
 
-.main > .panel > div > i.active {
+.main > .panel > i {
   cursor: pointer;
 }
 
-.main > .panel > div > i:not(.active) {
-  color: rgba(255, 255, 255, .4);
-  text-shadow: none;
+.main > .panel > i:not(.active) {
+  opacity: 0.5;
 }
 
-.main > .panel > div > img {
+.main > .panel > img {
   width: 16px;
 }
 
+.main > .wrapper {
+  border-bottom: 4px solid var(--night0);
+  line-height: 1.4;
+}
+
 .main > main {
-  padding-top: 36px;
+  padding-top: 60px;
 }
 
 .main > main > .name {
-  background-color: #4c566a;
-  border-radius: 4px;
-  margin-top: 4px;
+  background-color: var(--night4);
+  border: 2px solid var(--night4);
+  padding-bottom: 2px;
+  padding-top: 2px;
+}
+
+.main > main > .alert {
+  border-color: var(--aurora5);
 }
 
 .main > main > div {
+  border-radius: 4px;
+  border: 2px solid var(--night0);
   padding-left: 10px;
   padding-right: 10px;
+  transition: border-color 200ms;
 }
 
 .main > main > div > b {
   font-weight: bold;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 300px) {
-  .main {
-    font: normal 14px/18px sans-serif;
-  }
-
   .main > .wrapper {
     margin-left: auto;
     margin-right: auto;

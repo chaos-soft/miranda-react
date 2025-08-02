@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-import { Message } from './common'
+import Message from './message'
+import { Message as MessageClass } from './common'
 
 const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico', v: 'v.png' }
 const url = import.meta.env.VITE_WEBSOCKET_URL
@@ -28,8 +29,8 @@ function Messages ({
     if (message.id === 'js' && message.text === 'clean_chat') {
       setMessages([])
     } else if (message.id in icons) {
-      message.classes = [message.id]
-      new Message(message).replace()
+      message.classes = ['alert', message.id]
+      new MessageClass(message).replace()
       names.forEach((name) => {
         if (message.text.search(name) !== -1) {
           message.classes.push('name')
@@ -77,7 +78,16 @@ function Messages ({
     })
     let interval = setInterval(() => {
       if (w.readyState === w.OPEN) {
-        w.send(JSON.stringify({ offset, code: searchParams.get('code') || '' }))
+        const state = searchParams.get('state') || ''
+        let data
+        if (state.startsWith('twitch-')) {
+          data = { offset, twitch: searchParams.get('code') || '' }
+        } else if (state.startsWith('youtube-')) {
+          data = { offset, youtube: searchParams.get('code') || '' }
+        } else {
+          data = { offset }
+        }
+        w.send(JSON.stringify(data))
       }
     }, 5 * 1000)
     return () => w.close()
@@ -95,15 +105,13 @@ function Messages ({
         )
       } else if (message.id in icons) {
         return (
-          <div key={i} className={message.classes.join(' ')} {...props}>
-            <img src={`store/icons/${icons[message.id]}`} loading='lazy' />
-            {' '}
-            {isColor
-              ? <b style={{ color: message?.color }}>{message.name}</b>
-              : <b>{message.name}</b>}
-            {': '}
-            <span dangerouslySetInnerHTML={{ __html: message.text }} />
-          </div>
+          <Message
+            icons={icons}
+            isColor={isColor}
+            key={i}
+            message={message}
+            {...props}
+          />
         )
       }
       return null

@@ -1,11 +1,17 @@
+.jill > div {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
 .stream {
   /* background: url(https://57st.su/store/blog/2017/10/16/72850_screenshots_2013-06-26_00010.jpg) no-repeat fixed center; */
   color: white;
-  font: bold 16px/20px 'helvetica neue', sans-serif;
+  font: bold 16px/1.4 'helvetica neue', sans-serif;
   height: 100vh;
   overflow: hidden;
   scroll-behavior: smooth;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, .9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   transition: opacity 2s;
 }
 
