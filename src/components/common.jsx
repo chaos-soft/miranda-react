@@ -39,19 +39,6 @@ class Message {
     }
   }
 
-  prepareS () {
-    const m = this.message.text.match(reSmile)
-    if (m) {
-      m.forEach((replacement) => {
-        const smileName = replacement.slice(1, -1)
-        this.replacements.push([
-          replacement,
-          `https://sc2tv.ru/images/smiles/${smileName}.png`
-        ])
-      })
-    }
-  }
-
   prepareT () {
     for (const r of this.replacements) {
       if (r.length === 2) {
@@ -78,8 +65,6 @@ class Message {
   replace () {
     if (this.message.id === 'g') {
       this.prepareG()
-    } else if (this.message.id === 's') {
-      this.prepareS()
     } else if (this.message.id === 't') {
       this.prepareT()
     }
