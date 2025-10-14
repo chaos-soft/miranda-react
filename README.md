@@ -1,5 +1,13 @@
 # UI к Miranda на React и Vite
 
+## Готовая версия
+
+[miranda-202509.tar.gz](https://57st.su/store/files/miranda-202509.tar.gz).
+Она работает с localhost.
+Заменить адрес можно с помощью команды sed:
+
+    sed -i 's/ws:\/\/localhost:55555/wss:\/\/production.com:55555/' index.html
+
 ## Установка
 
 Получение:

@@ -78,15 +78,7 @@ function Messages ({
     })
     let interval = setInterval(() => {
       if (w.readyState === w.OPEN) {
-        const state = searchParams.get('state') || ''
-        let data
-        if (state.startsWith('twitch-')) {
-          data = { offset, twitch: searchParams.get('code') || '' }
-        } else if (state.startsWith('youtube-')) {
-          data = { offset, youtube: searchParams.get('code') || '' }
-        } else {
-          data = { offset }
-        }
+        const data = { offset }
         w.send(JSON.stringify(data))
       }
     }, 5 * 1000)
