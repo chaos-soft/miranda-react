@@ -1,11 +1,10 @@
 /* global WebSocket */
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 
 import Message from './message'
 import { Message as MessageClass } from './common'
 
-const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico', v: 'v.png' }
+const icons = { g: 'g.png', t: 't.ico', y: 'y.ico', v: 'v.png' }
 const url = import.meta.env.VITE_WEBSOCKET_URL
 
 function Messages ({
@@ -21,7 +20,6 @@ function Messages ({
   ...props
 }) {
   const [isReconnect, setIsReconnect] = useState(true)
-  const [searchParams] = useSearchParams()
   let names = []
   offset = offset || 0
 
