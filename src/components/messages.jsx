@@ -11,12 +11,12 @@ function Messages ({
   emptyData,
   error,
   isColor,
+  isMiranda,
   main,
   messages,
   offset,
   processMessage,
   setMessages,
-  systemIds,
   ...props
 }) {
   const [isReconnect, setIsReconnect] = useState(true)
@@ -24,7 +24,7 @@ function Messages ({
   offset = offset || 0
 
   function processMessage_ (message) {
-    if (message.id === 'js' && message.text === 'clean_chat') {
+    if (message.id === 'm' && message.is_js && message.text === 'clean_chat') {
       setMessages([])
     } else if (message.id in icons) {
       message.classes = ['alert', message.id]
@@ -56,10 +56,11 @@ function Messages ({
       }
       if (data.messages.length) {
         const dm = data.messages.filter((message) => {
-          if (systemIds.includes(message.id) || message.id in icons) {
+          if (isMiranda || message.id in icons) {
             return true
+          } else {
+            return false
           }
-          return false
         })
         if (dm.length) {
           dm.forEach((message) => {
@@ -85,7 +86,7 @@ function Messages ({
 
   return (
     messages.map((message, i) => {
-      if (systemIds.includes(message.id)) {
+      if (message.id === 'm') {
         return (
           <div key={i} className={message.id} {...props}>
             <b>Miranda</b>

@@ -41,10 +41,10 @@ export default function Jill () {
     <main className={`stream jill ${i >= total ? 'o0' : ''}`} ref={main}>
       <Messages
         isColor
+        isMiranda={false}
         messages={messages}
         offset={-2}
         setMessages={setMessages}
-        systemIds={['e', 'p', 'js']}
       />
     </main>
   )

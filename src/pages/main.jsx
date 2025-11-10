@@ -90,10 +90,10 @@ export default function Main () {
           emptyData={emptyData}
           error={error}
           isColor
+          isMiranda
           main={(data) => setStats(data.stats)}
           messages={messages}
           setMessages={setMessages}
-          systemIds={['e', 'm', 'p', 'js', 'tts']}
         />
       </main>
     </div>
