@@ -4,14 +4,14 @@ const reSmile = /:\w+:/gi
 
 class Message {
   constructor (message) {
-    this.images = 'images' in message ? message.images : {}
+    this.images = message.images
     this.message = message
   }
 
-  addImageG (id, smileName, smiles) {
+  addSmileG (smileId, smileName, smiles) {
     return smiles.some((smile) => {
       if (smile.name === smileName) {
-        this.images[id] = smile.animated ? smile.img_gif : smile.img_big
+        this.images[smileId] = smile.animated ? smile.img_gif : smile.img_big
         return true
       }
       return false
@@ -21,13 +21,13 @@ class Message {
   prepareG () {
     const m = this.message.text.match(reSmile)
     if (m) {
-      m.forEach((id) => {
-        const smileName = id.slice(1, -1)
-        const isFound = this.addImageG(id, smileName, Global.Smiles)
+      m.forEach((smileId) => {
+        const smileName = smileId.slice(1, -1)
+        const isFound = this.addSmileG(smileId, smileName, Global.Smiles)
         if (!isFound) {
           this.message.premiums.forEach((id) => {
             if (id in Global.Channel_Smiles) {
-              this.addImageG(id, smileName, Global.Channel_Smiles[id])
+              this.addSmileG(smileId, smileName, Global.Channel_Smiles[id])
             }
           })
         }
