@@ -35,19 +35,10 @@ class Message {
     }
   }
 
-  replace_ () {
-    for (const k in this.images) {
-      this.message.text = this.message.text.replaceAll(k, `<img src="${this.images[k]}">`)
-    }
-  }
-
   replace () {
-    const html = document.createTextNode(this.message.text)
-    this.message.text = html.textContent
     if (this.message.id === 'g') {
       this.prepareG()
     }
-    this.replace_()
   }
 }
 

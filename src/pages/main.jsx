@@ -75,13 +75,13 @@ export default function Main () {
   return (
     <div className='main'>
       <div className='panel'>
-        <img src='store/icons/g.png' />
+        <img src='store/icons/g.png' alt='' />
         <span>{stats.g || '-'}</span>
-        <img src='store/icons/t.ico' />
+        <img src='store/icons/t.ico' alt='' />
         <span>{stats.t || '-'}</span>
-        <img src='store/icons/v.png' />
+        <img src='store/icons/v.png' alt='' />
         <span>{stats.v || '-'}</span>
-        <img src='store/icons/y.ico' />
+        <img src='store/icons/y.ico' alt='' />
         <span>{stats.y || '-'}</span>
         <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
       </div>
