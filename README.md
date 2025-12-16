@@ -12,7 +12,7 @@
 
 Получение:
 
-    git clone https://github.com/chaos-soft/miranda-next.git && cd miranda-next
+    git clone https://github.com/chaos-soft/miranda-react.git && cd miranda-react
 
 Установка компонентов:
 
