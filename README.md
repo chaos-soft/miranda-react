@@ -2,7 +2,7 @@
 
 ## Готовая версия
 
-[miranda-202509.tar.gz](https://57st.su/store/files/miranda-202509.tar.gz).
+[miranda-202512.tar.xz](https://57st.su/store/files/miranda-202512.tar.xz).
 Она работает с localhost.
 Заменить адрес можно с помощью команды sed:
 
