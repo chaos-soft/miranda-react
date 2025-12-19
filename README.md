@@ -2,7 +2,7 @@
 
 ## Готовая версия
 
-[miranda-202509.tar.gz](https://57st.su/store/files/miranda-202509.tar.gz).
+[miranda-202512.tar.xz](https://57st.su/store/files/miranda-202512.tar.xz).
 Она работает с localhost.
 Заменить адрес можно с помощью команды sed:
 
@@ -12,7 +12,7 @@
 
 Получение:
 
-    git clone https://github.com/chaos-soft/miranda-next.git && cd miranda-next
+    git clone https://github.com/chaos-soft/miranda-react.git && cd miranda-react
 
 Установка компонентов:
 

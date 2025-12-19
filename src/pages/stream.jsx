@@ -39,10 +39,10 @@ export default function Stream () {
         emptyData={emptyData}
         error={emptyData}
         isColor
+        isMiranda={false}
         messages={messages}
         offset={-10}
         setMessages={setMessages}
-        systemIds={['e', 'p', 'js']}
       />
     </main>
   )

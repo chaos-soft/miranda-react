@@ -1,32 +1,30 @@
 /* global WebSocket */
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 
 import Message from './message'
 import { Message as MessageClass } from './common'
 
-const icons = { g: 'g.png', s: 's.ico', t: 't.ico', y: 'y.ico', v: 'v.png' }
+const icons = { g: 'g.png', t: 't.ico', y: 'y.ico', v: 'v.png' }
 const url = import.meta.env.VITE_WEBSOCKET_URL
 
 function Messages ({
   emptyData,
   error,
   isColor,
+  isMiranda,
   main,
   messages,
   offset,
   processMessage,
   setMessages,
-  systemIds,
   ...props
 }) {
   const [isReconnect, setIsReconnect] = useState(true)
-  const [searchParams] = useSearchParams()
   let names = []
   offset = offset || 0
 
   function processMessage_ (message) {
-    if (message.id === 'js' && message.text === 'clean_chat') {
+    if (message.id === 'm' && message.is_js && message.text === 'clean_chat') {
       setMessages([])
     } else if (message.id in icons) {
       message.classes = ['alert', message.id]
@@ -58,10 +56,11 @@ function Messages ({
       }
       if (data.messages.length) {
         const dm = data.messages.filter((message) => {
-          if (systemIds.includes(message.id) || message.id in icons) {
+          if (isMiranda || message.id in icons) {
             return true
+          } else {
+            return false
           }
-          return false
         })
         if (dm.length) {
           dm.forEach((message) => {
@@ -87,7 +86,7 @@ function Messages ({
 
   return (
     messages.map((message, i) => {
-      if (systemIds.includes(message.id)) {
+      if (message.id === 'm') {
         return (
           <div key={i} className={message.id} {...props}>
             <b>Miranda</b>

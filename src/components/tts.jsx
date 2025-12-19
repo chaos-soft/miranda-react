@@ -19,7 +19,7 @@ export default function Tts ({ main, ...props }) {
   }
 
   function processMessage (message) {
-    if (message.id === 'tts') {
+    if (message.id === 'm' && (message.is_donate || message.is_event || message.is_tts)) {
       tts.current.push(message.text)
     }
   }
