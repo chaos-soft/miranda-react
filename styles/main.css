@@ -49,6 +49,10 @@
   padding-top: 60px;
 }
 
+.main > main > .first {
+  margin-top: 40px;
+}
+
 .main > main > .name {
   background-color: var(--night4);
   border: 2px solid var(--night4);

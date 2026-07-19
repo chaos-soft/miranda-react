@@ -63,12 +63,16 @@ function Messages ({
           }
         })
         if (dm.length) {
-          dm.forEach((message) => {
+          for (let i = 0; i < dm.length; i++) {
+            const message = dm[i]
             processMessage_(message)
+            if (i === 0 && message.id in icons) {
+              message.classes.push('first')
+            }
             if (processMessage) {
               processMessage(message)
             }
-          })
+          }
           setMessages((messages) => [...messages, ...dm])
         }
       } else if (emptyData) {

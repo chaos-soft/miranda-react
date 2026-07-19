@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
 export default function Message ({ message, isColor, icons, ...props }) {
   useEffect(() => {
@@ -15,9 +15,9 @@ export default function Message ({ message, isColor, icons, ...props }) {
       {': '}
       {message.text.split(' ').map((v, i) => {
         if (v in message.images) {
-          return <span key={i}><img src={message.images[v]} loading='lazy' alt='' />{' '}</span>
+          return <Fragment key={i}><img src={message.images[v]} alt='' />{' '}</Fragment>
         } else {
-          return <span key={i}>{v}{' '}</span>
+          return <Fragment key={i}>{v}{' '}</Fragment>
         }
       })}
     </div>

@@ -5,11 +5,12 @@ import Tts from '../components/tts'
 const message = { id: 'm', text: 'потеряно соединение.', classes: ['m'] }
 
 export default function Main () {
-  const [messages, setMessages] = useState([])
   const [isScrolling_, setIsScrolling_] = useState(true)
+  const [messages, setMessages] = useState([])
+  const [offset, setOffset] = useState(0)
   const [stats, setStats] = useState({})
-  const main = useRef(null)
   const isScrolling = useRef(true)
+  const main = useRef(null)
 
   function emptyData () {
     isScrolling.current = false
@@ -20,6 +21,7 @@ export default function Main () {
       setMessages((messages) => [message])
     }
     emptyData()
+    setOffset(-5)
   }
 
   function keydown (e) {
@@ -93,6 +95,7 @@ export default function Main () {
           isMiranda
           main={(data) => setStats(data.stats)}
           messages={messages}
+          offset={offset}
           setMessages={setMessages}
         />
       </main>
