@@ -43,7 +43,7 @@ export default function Tts ({ main, ...props }) {
           isBusy.current = false
         }
       })
-      interval = setInterval(() => worker(), 2000)
+      interval = setInterval(() => worker(), 2 * 1000)
     }
     return () => {
       if (apiKey) {

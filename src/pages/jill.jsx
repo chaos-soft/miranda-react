@@ -5,23 +5,23 @@ import Messages from '../components/messages'
 let scrollInterval = null
 
 export default function Jill () {
-  const [i, setI] = useState(0)
+  const [index, setIndex] = useState(0)
   const [messages, setMessages] = useState([])
   const [total, setTotal] = useState(0)
   const main = useRef(null)
 
   function scroll () {
-    main.current.scrollBy(0, main.current.offsetHeight)
+    window.scrollBy({ top: window.innerHeight, left: 0, behavior: 'smooth' })
   }
 
   useEffect(() => {
-    if (i !== 0) {
+    if (index !== 0) {
       scroll()
     }
     scrollInterval = setInterval(() => {
       scroll()
-      setI((i) => i + 1)
-    }, 5000)
+      setIndex((index) => index + 1)
+    }, 5 * 1000)
     setTotal(messages.length)
     return () => {
       clearInterval(scrollInterval)
@@ -30,15 +30,36 @@ export default function Jill () {
   }, [messages])
 
   useEffect(() => {
-    if (i >= total) {
+    if (index >= total) {
       clearInterval(scrollInterval)
       scrollInterval = null
-      setI(total)
+      setIndex(total)
     }
-  }, [i])
+  }, [index])
+
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
 
   return (
-    <main className={`stream jill ${i >= total ? 'o0' : ''}`} ref={main}>
+    <main
+      className={`
+        ${index >= total ? 'opacity-0' : ''}
+        *:[&_b]:text-frost3
+        *:[&_img]:first:align-sub
+        *:[&_img]:first:w-[16px]
+        *:[div]:h-screen
+        duration-2000
+        font-[helvetica_neue]
+        font-bold
+        jill-theme
+        leading-5
+        text-base
+        text-shadow-md/40
+        text-white
+      `}
+      ref={main}
+    >
       <Messages
         isColor
         isMiranda={false}

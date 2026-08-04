@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+main > .e > b,
+main > .js > b,
+main > .m > b,
+main > .p > b,
+main > .tts > b {
+  color: var(--color-aurora5);
+}
+
+@theme {
+  --color-aurora1: #bf616a;
+  --color-aurora2: #d08770;
+  --color-aurora3: #ebcb8b;
+  --color-aurora4: #a3be8c;
+  --color-aurora5: #b48ead;
+  --color-frost1: #8fbcbb;
+  --color-frost2: #88c0d0;
+  --color-frost3: #81a1c1;
+  --color-frost4: #5e81ac;
+  --color-night0: #252a33;
+  --color-night1: #2e3440;
+  --color-night2: #3b4252;
+  --color-night3: #434c5e;
+  --color-night4: #4c566a;
+  --color-storm1: #d8dee9;
+  --color-storm2: #e5e9f0;
+  --color-storm3: #eceff4;
+}

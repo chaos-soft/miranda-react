@@ -38,7 +38,7 @@ export default function Main () {
 
   function scroll () {
     if (isScrolling.current) {
-      window.scroll(0, 1000000)
+      window.scroll({ top: main.current.offsetHeight, left: 0, behavior: 'smooth' })
     }
   }
 
@@ -75,8 +75,25 @@ export default function Main () {
   }, [messages])
 
   return (
-    <div className='main'>
-      <div className='panel'>
+    <div className='bg-night0 min-h-screen text-sm text-storm3'>
+      <div className={`
+        *:[img]:w-[16px]
+        backdrop-blur-md
+        border-b-5
+        border-night4
+        fixed
+        flex
+        gap-2
+        items-center
+        justify-center
+        left-0
+        py-2
+        shadow-md/30
+        text-shadow-lg/50
+        top-0
+        w-full
+      `}
+      >
         <img src='store/icons/g.png' alt='' />
         <span>{stats.g || '-'}</span>
         <img src='store/icons/t.ico' alt='' />
@@ -85,9 +102,46 @@ export default function Main () {
         <span>{stats.v || '-'}</span>
         <img src='store/icons/y.ico' alt='' />
         <span>{stats.y || '-'}</span>
-        <i className={isScrolling_ ? '' : 'active'} onClick={startScroll}>Прокрутка</i>
+        <span
+          className={
+            'cursor-pointer' +
+            (isScrolling_ ? ' opacity-50' : '')
+          }
+          onClick={startScroll}
+        >
+          Прокрутка
+        </span>
       </div>
-      <main className='wrapper' ref={main}>
+
+      <main
+        className={`
+          *:[&_a]:hover:no-underline
+          *:[&_a]:underline
+          *:[&_b]:text-frost3
+          *:[&_b]:text-shadow-md/40
+          *:[&_img]:first:align-sub
+          *:[&_img]:first:w-[16px]
+          *:[.alert]:border-aurora5
+          *:[.first]:mt-10
+          *:[.name]:bg-night4
+          *:[.name]:py-1
+          *:[div]:border-2
+          *:[div]:border-night0
+          *:[div]:duration-200
+          *:[div]:px-1
+          *:[div]:rounded-md
+          *:[div]:transition-colors
+          flex
+          flex-col
+          gap-1
+          leading-5
+          main-theme
+          mx-2 xl:mx-auto xl:w-256
+          pb-5
+          pt-15
+        `}
+        ref={main}
+      >
         <Tts
           emptyData={emptyData}
           error={error}

@@ -16,7 +16,7 @@ export default function Stream () {
 
   function scroll () {
     if (isScrolling.current) {
-      main.current.scroll(0, 1000000)
+      window.scroll({ top: main.current.offsetHeight, left: 0, behavior: 'smooth' })
     }
   }
 
@@ -34,7 +34,26 @@ export default function Stream () {
   }, [messages])
 
   return (
-    <main className={`stream ${i >= 12 ? 'o0' : ''}`} ref={main}>
+    <main
+      className={`
+        ${i >= 12 ? 'opacity-0' : ''}
+        *:[&_b]:text-frost3
+        *:[&_img]:first:align-sub
+        *:[&_img]:first:w-[16px]
+        duration-2000
+        flex
+        flex-col
+        font-[helvetica_neue]
+        font-bold
+        gap-2
+        leading-5
+        stream-theme
+        text-base
+        text-shadow-md/40
+        text-white
+      `}
+      ref={main}
+    >
       <Messages
         emptyData={emptyData}
         error={emptyData}
