@@ -42,10 +42,9 @@
 
 В наличии четыре темы оформления:
 
-- pages/2b.jsx
-- pages/jill.jsx
-- pages/main.jsx
-- pages/stream.jsx
+- pages/jill
+- pages/main
+- pages/stream
 
 Ссылки на них всегда есть на главной странице.
 
@@ -60,6 +59,6 @@ Main — главная тема со всеми сообщениями, вкл�
 
 ## Руководство по стилю
 
-В проекте используется [JavaScript Standard Style](https://standardjs.com).
+В проекте используется prettier@3.9.6.
 
 v1

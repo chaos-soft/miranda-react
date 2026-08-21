@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
-main > .e > b,
-main > .js > b,
-main > .m > b,
-main > .p > b,
-main > .tts > b {
+main > .m > b {
   color: var(--color-aurora5);
 }
 
